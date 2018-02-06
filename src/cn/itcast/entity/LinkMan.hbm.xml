@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.entity.LinkMan" table="t_linkman">
+		<id name="linkid" column="linkid">
+			<generator class="native"></generator>
+		</id>
+		<property name="lkmName" column="lkmName"/>
+		<property name="lkmGender" column="lkmGender"/>
+		<property name="lkmPhone" column="lkmPhone"/>
+		<property name="lkmMobile" column="lkmMobile"/>
+		
+		<!-- 联系人所属客户  这个clid与Customer设置的key应一致-->
+		<many-to-one name="customer" class="cn.itcast.entity.Customer" column="clid"></many-to-one>
+	</class>
+
+</hibernate-mapping>

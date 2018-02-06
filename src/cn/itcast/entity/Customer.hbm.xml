@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.entity.Customer" table="t_customer">
+		<id name="cid" column="cid">
+			<!-- 主键生成策略native用于int类型，自动增长 -->
+			<generator class="native"></generator>
+		</id>
+		<property name="custName" column="custName"/>
+		<property name="custSource" column="custSource"/>
+		<property name="custPhone" column="custPhone"/>
+		<property name="custMobile" column="custMobile"/>
+		
+		<!-- 表示所有联系人,inverse="true"表示放弃关联关系维护,cascade="delete"级联删除-->
+		<set name="setLinkMan" inverse="true" cascade="delete">
+			<!-- 设置一个id表示 -->
+			<key column="clid"></key>
+			<one-to-many class="cn.itcast.entity.LinkMan"/>
+		</set>
+		
+		<set name="setCusVisit" inverse="true" cascade="delete">
+			<!-- 设置一个id表示 -->
+			<key column="cvid"></key>
+			<one-to-many class="cn.itcast.entity.Visit"/>
+		</set>
+		
+		<!-- 所属级别 -->
+		<many-to-one name="dictCustLevel" class="cn.itcast.entity.Dict" column="custLevel"></many-to-one>
+	</class>
+
+</hibernate-mapping>

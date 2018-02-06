@@ -1,0 +1,60 @@
+<%@ page language="java" pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
+ <head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="css/common.css">
+   <link rel="stylesheet" href="css/main.css">
+   <script type="text/javascript" src="js/jquery.min.js"></script>
+   <script type="text/javascript" src="js/colResizable-1.3.min.js"></script>
+   <script type="text/javascript" src="js/common.js"></script>
+   
+   <script type="text/javascript">
+      $(function(){  
+        $(".list_table").colResizable({
+          liveDrag:true,
+          gripInnerHtml:"<div class='grip'></div>", 
+          draggingClass:"dragging", 
+          minWidth:30
+        }); 
+      }); 
+   </script>
+   <title>客户信息查询</title>
+ </head>
+ <body>
+  <div class="container">
+     <div id="forms" class="mt10">
+        <div class="box">
+          <div class="box_border">
+            <div class="box_top"><b class="pl15">客户信息查询</b></div>
+            <div class="box_center">
+              <form action="${pageContext.request.contextPath}/linkman_moreCondition.action" class="jqtransform" method="post" name="form1">
+               <table class="form_table pt15 pb15" width="100%" border="0" cellpadding="0" cellspacing="0">
+                 <tr>
+	                  <td class="td_right">客户名称：</td>
+	                  <td class=""> 
+	                    <input type="text" name="custName" class="input-text lh30" size="40" required>
+	                  </td>
+                 </tr>
+                 <tr>
+	                  <td class="td_right">信息来源：</td>
+	                  <td>
+	                  	<input type="text" name="custSource" class="input-text lh30" size="40" required/>
+	                  </td>
+                </tr>
+                 <tr>
+                   <td class="td_right">&nbsp;</td>
+                   <td class="">
+                     <input type="submit" class="btn btn82 btn_save2" value="查询">
+                   </td>
+                 </tr>
+               </table>
+               </form>
+            </div>
+          </div>
+        </div>
+     </div>
+   </div> 
+ </body>
+ </html>
+  
